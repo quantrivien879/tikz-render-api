@@ -167,7 +167,7 @@ def compile_tex(req: TexCompileRequest):
     - Hỗ trợ đính kèm assets (ảnh, v.v.) qua base64 nếu tài liệu có \includegraphics{...}
     """
     try:
-        src = safe_text(req.tex, limit=500_000)
+        src = safe_text(req.tex, limit=500_000, allow_file_inputs=True)
 
         engine = (req.engine or "pdflatex").strip().lower()
         if engine not in {"pdflatex"}:
